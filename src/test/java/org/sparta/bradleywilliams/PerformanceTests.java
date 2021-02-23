@@ -12,7 +12,8 @@ public class PerformanceTests {
         Printer.printMessage("Starting test with 10k file...");
         EmployeeManager employeeManager = new EmployeeManager();
         long start = System.nanoTime();
-        employeeManager.generateEmployees("resources/employees.csv");
+        employeeManager.getEmployees("resources/employees.csv");
+        employeeManager.InsertUsingThreads();
         long end = System.nanoTime();
         Printer.printMessage("Time to complete = " + (end-start)/1000000);
     }
@@ -23,7 +24,8 @@ public class PerformanceTests {
         Printer.printMessage("Starting test 65k file...");
         EmployeeManager employeeManager = new EmployeeManager();
         long start = System.nanoTime();
-        employeeManager.generateEmployees("resources/EmployeeRecordsLarge.csv");
+        employeeManager.getEmployees("resources/EmployeeRecordsLarge.csv");
+        employeeManager.InsertUsingThreads();
         long end = System.nanoTime();
         Printer.printMessage("Time to complete = " + (end-start)/1000000);
     }

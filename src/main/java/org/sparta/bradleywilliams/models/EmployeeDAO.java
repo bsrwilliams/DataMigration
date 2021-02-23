@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Properties;
 
@@ -32,21 +33,21 @@ public class EmployeeDAO {
         return connection;
     }
 
-    public void insertValues(Map<Integer, Employee> employees) {
+    public void addBatch(ArrayList<Employee> employees) {
         String query = "INSERT INTO Employees(EmpID, name_prefix, first_name, middle_initial, last_name, gender, email, date_of_birth, join_date, salary) VALUES (?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement preparedStatement = connectToDatabase().prepareStatement(query);
-            for (Map.Entry<Integer, Employee> employee : employees.entrySet()) {
-                preparedStatement.setInt(1, employee.getValue().getEmployeeID());
-                preparedStatement.setString(2, employee.getValue().getTitle());
-                preparedStatement.setString(3, employee.getValue().getFirstName());
-                preparedStatement.setString(4, Character.toString(employee.getValue().getMiddleInitial()));
-                preparedStatement.setString(5, employee.getValue().getLastName());
-                preparedStatement.setString(6, Character.toString(employee.getValue().getGender()));
-                preparedStatement.setString(7, employee.getValue().getEmail());
-                preparedStatement.setDate(8, employee.getValue().getDateOfBirth());
-                preparedStatement.setDate(9, employee.getValue().getJoinDate());
-                preparedStatement.setInt(10, employee.getValue().getSalary());
+            for (Employee employee : employees) {
+                preparedStatement.setInt(1, employee.getEmployeeID());
+                preparedStatement.setString(2, employee.getTitle());
+                preparedStatement.setString(3, employee.getFirstName());
+                preparedStatement.setString(4, Character.toString(employee.getMiddleInitial()));
+                preparedStatement.setString(5, employee.getLastName());
+                preparedStatement.setString(6, Character.toString(employee.getGender()));
+                preparedStatement.setString(7, employee.getEmail());
+                preparedStatement.setDate(8, employee.getDateOfBirth());
+                preparedStatement.setDate(9, employee.getJoinDate());
+                preparedStatement.setInt(10, employee.getSalary());
 
                 preparedStatement.addBatch();
             }
