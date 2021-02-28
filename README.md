@@ -1,7 +1,14 @@
 # DataMigration
 
 ## Description
-This project facilitates the transfer of data stored in a CSV (Comma Seperated Values) file to a Database. This application can handle small to large CSV files. 
+This project facilitates the transfer of data stored in various sized CSV (Comma Seperated Values) files to a Database. This application was tested with a 10K and 65K sized CSV files.
+
+### Complexity
+- 10K without threads: 814 nanoseconds 
+- 10K with 5 threads: 944 nanoseconds
+
+- 65K without threads: 2453 nanoseconds
+- 65K with 5 threads: 2703 nanoseconds 
 
 ### Future Improvements
 - Functional Programming
