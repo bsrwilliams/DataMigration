@@ -4,7 +4,6 @@
 This project facilitates the transfer of data stored in a CSV (Comma Seperated Values) file to a Database. This application can handle small to large CSV files. 
 
 ### Future Improvements
-- Threading for faster data processing
 - Functional Programming
 - Graphical User Interface - GUI
 
